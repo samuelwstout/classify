@@ -32,7 +32,7 @@ const Login = ({ code }) => {
             Classify
             </Typography>
             <Typography sx={{ mt: 2 }}>
-                <Button href={AUTH_URL_PROD} variant='outlined'>Sign in with Spotify</Button>
+                <Button href={AUTH_URL_LOCAL} variant='outlined'>Sign in with Spotify</Button>
             </Typography> 
             </Box>
       </Container>
