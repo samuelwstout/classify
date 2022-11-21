@@ -31,12 +31,11 @@ const Results = ({ code }) => {
     })
   }, [composer, accessToken])
 
-  console.log(artistId)
-
 
   return (
     <> 
       <h1>{composer}</h1>
+      <h3>{artistId}</h3>
     </>
   )
 }
