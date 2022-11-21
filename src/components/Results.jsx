@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react'
 import { selectName } from '../redux/composerSlice'
 import { useSelector } from 'react-redux'
 import SpotifyWebApi from 'spotify-web-api-node'
+import useAuth from './useAuth'
 
-const Results = () => {
+const Results = ({ code }) => {
+
+  const [artistId, setArtistId] = useState('')
 
   const composer = useSelector(selectName)
 
@@ -11,11 +14,24 @@ const Results = () => {
     clientId: 'a45eb12484d24c4199050bdefee6d24b',
   })
 
-  const AUTH_URL_LOCAL = 'https://accounts.spotify.com/authorize?client_id=a45eb12484d24c4199050bdefee6d24b&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state'
+  const accessToken = useAuth(code)
 
-  const AUTH_URL_PROD = 'https://accounts.spotify.com/authorize?client_id=a45eb12484d24c4199050bdefee6d24b&response_type=code&redirect_uri=https://classify.up.railway.app/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state'
+  useEffect(() => {
+    if (!accessToken) return
+    spotifyApi.setAccessToken(accessToken)
+  }, [accessToken])
 
-  
+  useEffect(() => {
+    if (!composer) return setArtistId([])
+    if (!accessToken) return
+    const cancel = false
+    spotifyApi.searchArtists(composer).then(res => {
+      if (cancel) return
+      setArtistId(res.body.artists.items[0].id)
+    })
+  }, [composer, accessToken])
+
+  console.log(artistId)
 
 
   return (
