@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, ButtonGroup, CssBaseline, Box, Typography, Container } from '@mui/material'
+import { Button, CssBaseline, Box, Typography, Container } from '@mui/material'
 
 const AUTH_URL_LOCAL = 'https://accounts.spotify.com/authorize?client_id=a45eb12484d24c4199050bdefee6d24b&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state'
 
@@ -14,7 +14,6 @@ const Login = ({ code }) => {
 
     const navigate = useNavigate()
     
-
 
     return (
         <Container component="main" maxWidth="xs">
