@@ -10,21 +10,21 @@ const App = () => {
 
   const [composers, setComposers] = useState([])
 
-  // useEffect(() => {
-  //   const fetchComposers = async () => {
-  //     const response = await fetch('composers.json')
-  //     const data = await response.json()
-  //     const listofComposers = data.composers.map((composer) => composer)
-  //     setComposers(listofComposers)
-  //   }
-  //   fetchComposers()
-  // }, [])
+  useEffect(() => {
+    const fetchComposers = async () => {
+      const response = await fetch('https://api.openopus.org/composer/list/rec.json')
+      const data = await response.json()
+      const listofComposers = data.composers.map((composer) => composer)
+      setComposers(listofComposers)
+    }
+    fetchComposers()
+  }, [])
 
   return (
     <Router>
         <Routes>
           <Route path='/' element={<Login code={code} />} />
-          <Route path='/search' element={<Search composerData={composers} />} />
+          <Route path='/search' element={<Search composers={composers} />} />
           <Route path='/results' element={<Results code={code} />} />
         </Routes>
     </Router>
