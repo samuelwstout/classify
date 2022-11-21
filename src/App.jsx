@@ -10,15 +10,15 @@ const App = () => {
 
   const [composers, setComposers] = useState([])
 
-  useEffect(() => {
-    const fetchComposers = async () => {
-      const response = await fetch('composers.json')
-      const data = await response.json()
-      const listofComposers = data.composers.map((composer) => composer)
-      setComposers(listofComposers)
-    }
-    fetchComposers()
-  }, [])
+  // useEffect(() => {
+  //   const fetchComposers = async () => {
+  //     const response = await fetch('composers.json')
+  //     const data = await response.json()
+  //     const listofComposers = data.composers.map((composer) => composer)
+  //     setComposers(listofComposers)
+  //   }
+  //   fetchComposers()
+  // }, [])
 
   return (
     <Router>
