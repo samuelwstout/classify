@@ -27,7 +27,10 @@ const App = () => {
     axios.post('http://localhost:3001/login', {
         code,
     })
-    .then(res => localStorage.setItem('accessToken', res.data.accessToken))
+    .then(res => {
+      localStorage.setItem('accessToken', res.data.accessToken)
+      localStorage.setItem('code', code)
+    })
     }
    }, [code])
 
