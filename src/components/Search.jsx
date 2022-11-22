@@ -1,14 +1,10 @@
 import { useState } from 'react'
 import { Button, CssBaseline, TextField, Box, Typography, Container, Grid, Card, CardContent } from '@mui/material'
-import { useSelector, useDispatch } from 'react-redux'
-import { setComposer, selectName } from '../redux/composerSlice'
 import { useNavigate } from 'react-router-dom'
 
-const Search = ({ composers }) => {
+const Search = ({ composers, setComposer }) => {
 
     const navigate = useNavigate()
-    useSelector(selectName)
-    const dispatch = useDispatch()
   
     const [search, setSearch] = useState('')
 
@@ -31,7 +27,7 @@ const Search = ({ composers }) => {
         return (
             <Grid item key={composer.id} xs={12} sm={12} md={12}>
                 <Card onClick={() => navigate('/results')} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <CardContent onClick={() => dispatch(setComposer(composer.name))} sx={{ flexGrow: 1 }}>
+                    <CardContent onClick={() => localStorage.setItem('composer', composer.name)} sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant='h5' component='h2'>
                       {composer.name}
                     </Typography>
@@ -40,8 +36,6 @@ const Search = ({ composers }) => {
             </Grid>
         )
     })
-
-
 
   return (
     <>
