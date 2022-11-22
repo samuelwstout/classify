@@ -7,30 +7,27 @@ const useAuth = (code) => {
  const [expiresIn, setExpiresIn] = useState()
 
  useEffect(() => {
-    axios.post('https://classify-backend.up.railway.app/login', {
+    debugger
+    axios.post('http://localhost:3001/login', {
         code,
-    }).then(res => {
+    })
+    .then(res => {
         setAccessToken(res.data.accessToken)
         setRefreshToken(res.data.refreshToken)
         setExpiresIn(res.data.expiresIn)
         window.history.pushState({}, null, '/')
-    }).catch((err) => {
-        console.log(err)
-        // window.location = '/'
     })
  }, [code])
 
 useEffect(() => {
     if (!refreshToken || !expiresIn) return
     const interval = setInterval(() => {
-    axios.post('https://classify-backend.up.railway.app/refresh', {
+    axios.post('http://localhost:3001/refresh', {
         refreshToken,
     })
     .then(res => {
         setAccessToken(res.data.accessToken)
         setExpiresIn(res.data.expiresIn)
-    }).catch(() => {
-        window.location = '/'
     })
   }, (expiresIn - 60) * 1000)
 
