@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, CssBaseline, TextField, Box, Typography, Container, Grid, Card, CardContent } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-const Search = ({ composers, setComposer }) => {
+const Search = ({ composers }) => {
 
     const navigate = useNavigate()
   
