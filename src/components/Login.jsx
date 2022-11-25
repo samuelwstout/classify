@@ -6,13 +6,12 @@ const AUTH_URL_LOCAL = 'https://accounts.spotify.com/authorize?client_id=a45eb12
 
 const AUTH_URL_PROD = 'https://accounts.spotify.com/authorize?client_id=a45eb12484d24c4199050bdefee6d24b&response_type=code&redirect_uri=https://classify.up.railway.app/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state'
 
-
-const Login = () => {
+const Login = ({ code }) => {
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (localStorage.code) {
+        if (code) {
           navigate('/search')
         }
         }, [])
