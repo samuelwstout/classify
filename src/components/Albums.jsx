@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Box, Typography, Container, ImageListItem, ImageListItemBar, ImageList } from '@mui/material'
 
 const Albums = ({ accessToken, spotifyApi, setAlbumImg }) => {
 
@@ -28,13 +29,13 @@ const Albums = ({ accessToken, spotifyApi, setAlbumImg }) => {
       if (cancel) return
         const albums = res.body.items.map(a => {
             return (
-              <div key={a.id} onClick={() => {
+              <ImageListItem key={a.id} onClick={() => {
                 navigate(`/tracks/${a.id}`)
                 setAlbumImg(a.images[1].url)
               }}>
-                <h5>{a.name}</h5>
-                <img src={a.images[1].url}></img>
-              </div>
+                <img src={a.images[1].url} />
+                <ImageListItemBar title={a.name} />
+              </ImageListItem>
             )
           })
         setAlbums(albums)
@@ -43,8 +44,18 @@ const Albums = ({ accessToken, spotifyApi, setAlbumImg }) => {
 
   return (
     <>
-      <h1>{composer}</h1>
-      {albums}
+      <Box sx={{ pt: 2, pb: 3 }}>
+          <Typography align='center' component='h1' variant='h4'>{composer}</Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+        <ImageList sx={{ width: 750, height: 750 }}>
+          {albums}
+        </ImageList>
+        </Box>
+      </Box>
     </>
   )
 }
