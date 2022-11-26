@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Player from './Player'
 import useToggle from './useToggle'
+import { Box, Typography, Card, CardContent } from '@mui/material'
 
 const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
 
@@ -19,11 +20,11 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
           if (cancel) return
             const tracks = res.body.items.map(t => {
                 return (
-                      <div key={t.id} onClick={() => setTrackUri(t.uri)}>
-                        <div onClick={toggleValue}>
-                            <h5>{t.name}</h5>
-                        </div>
-                      </div>
+                      <Card variant='outlined' key={t.id} onClick={() => setTrackUri(t.uri)}>
+                        <CardContent onClick={toggleValue}>
+                            <Typography sx={{ cursor: 'pointer' }}>{t.name}</Typography>
+                        </CardContent>
+                      </Card>
                 )
             })
             setTracks(tracks)
@@ -32,9 +33,23 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
 
   return (
     <>
-        <img src={albumImg}></img>
-        {tracks}
-        <Player accessToken={accessToken} trackUri={value ? trackUri : null} />
+      <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+      }}
+      >
+        <Typography align='center'>
+          <img src={albumImg} />
+        </Typography>
+
+          {tracks}
+
+        <Box component="footer" sx={{ position: 'fixed', bottom: 0, width: '100%' }}>
+            <Player accessToken={accessToken} trackUri={value ? trackUri : null} />
+        </Box>
+      </Box>
     </>
   )
 }
