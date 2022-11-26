@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Results = ({ accessToken, spotifyApi }) => {
+const Albums = ({ accessToken, spotifyApi, setAlbumImg }) => {
+
+  const navigate = useNavigate()
 
   const [artistId, setArtistId] = useState('')
   const [albums, setAlbums] = useState([])
@@ -10,7 +13,7 @@ const Results = ({ accessToken, spotifyApi }) => {
   useEffect(() => {
     if (!composer) return setArtistId([])
     if (!accessToken) return
-    let cancel = false
+    const cancel = false
     spotifyApi.searchArtists(composer).then(res => {
       if (cancel) return
       setArtistId(res.body.artists.items[0].id)
@@ -20,13 +23,15 @@ const Results = ({ accessToken, spotifyApi }) => {
   useEffect(() => {
     if (!artistId) return setAlbums([])
     if (!accessToken) return
-    let cancel = false
+    const cancel = false
     spotifyApi.getArtistAlbums(artistId).then(res => {
       if (cancel) return
-      res.body.items.map(a => console.log(a))
         const albums = res.body.items.map(a => {
             return (
-              <div key={a.id}>
+              <div key={a.id} onClick={() => {
+                navigate(`/tracks/${a.id}`)
+                setAlbumImg(a.images[1].url)
+              }}>
                 <h5>{a.name}</h5>
                 <img src={a.images[1].url}></img>
               </div>
@@ -44,4 +49,4 @@ const Results = ({ accessToken, spotifyApi }) => {
   )
 }
 
-export default Results
+export default Albums

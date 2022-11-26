@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import Login from './components/Login'
 import Search from './components/Search'
-import Results from './components/Results'
+import Albums from './components/Albums'
+import Tracks from './components/Tracks'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import axios from 'axios'
 import SpotifyWebApi from 'spotify-web-api-node'
@@ -16,6 +17,7 @@ const spotifyApi = new SpotifyWebApi({
 const App = () => {
 
   const [composers, setComposers] = useState([])
+  const [albumImg, setAlbumImg] = useState('')
 
   useEffect(() => {
     axios.get('https://api.openopus.org/composer/list/rec.json')
@@ -39,7 +41,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Login code={code} />} />
           <Route path='/search' element={<Search composers={composers} />} />
-          <Route path='/results' element={<Results spotifyApi={spotifyApi} accessToken={accessToken} />} />
+          <Route path='/albums' element={<Albums spotifyApi={spotifyApi} accessToken={accessToken} setAlbumImg={setAlbumImg} />} />
+          <Route path='/tracks/:id' element={<Tracks spotifyApi={spotifyApi} accessToken={accessToken} albumImg={albumImg} />} />
         </Routes>
     </Router>
   )

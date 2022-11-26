@@ -26,7 +26,7 @@ const Search = ({ composers }) => {
     const displayComposers = filterAsUserTypes.map((composer) => {
         return (
             <Grid item key={composer.id} xs={12} sm={12} md={12}>
-                <Card onClick={() => navigate('/results')} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <Card onClick={() => navigate('/albums')} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                     <CardContent onClick={() => localStorage.setItem('composer', composer.name)} sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant='h5' component='h2'>
                       {composer.name}
