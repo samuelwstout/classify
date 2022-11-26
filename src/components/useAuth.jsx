@@ -7,7 +7,7 @@ const useAuth = (code) => {
  const [expiresIn, setExpiresIn] = useState()
 
  useEffect(() => {
-    axios.post('https://classify-backend.up.railway.app/login', {
+    axios.post('http://localhost:3001/login', {
         code,
     }).then(res => {
         setAccessToken(res.data.accessToken)
@@ -23,7 +23,7 @@ useEffect(() => {
     if (!refreshToken || !expiresIn) return
     const interval = setInterval(() => {
     axios
-    .post(`https://classify-backend.up.railway.app/refresh`, {
+    .post(`http://localhost:3001/refresh`, {
         refreshToken,
     })
     .then(res => {
