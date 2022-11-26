@@ -9,7 +9,7 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
 
     const [tracks, setTracks] = useState([])
     const [value, toggleValue] = useToggle(false)
-    const [playingTrack, setPlayingTrack] = useState([])
+    const [trackUri, setTrackUri] = useState('')
 
     useEffect(() => {
         if (!params) return setTracks([])
@@ -19,7 +19,7 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
           if (cancel) return
             const tracks = res.body.items.map(t => {
                 return (
-                      <div key={t.id} onClick={() => setPlayingTrack(t)}>
+                      <div key={t.id} onClick={() => setTrackUri(t.uri)}>
                         <div onClick={toggleValue}>
                             <h5>{t.name}</h5>
                         </div>
@@ -34,7 +34,7 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
     <>
         <img src={albumImg}></img>
         {tracks}
-        <Player accessToken={accessToken} trackUri={value ? playingTrack.uri : null} />
+        <Player accessToken={accessToken} trackUri={value ? trackUri : null} />
     </>
   )
 }
