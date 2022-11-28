@@ -39,8 +39,11 @@ const Search = ({ composers }) => {
 
   return (
     <>
-    <Container component="main" maxWidth="xs">
     <CssBaseline />
+    <Typography align='left'>
+        <Button onClick={() => window.location.href = 'https://classify.up.railway.app/'}>Back</Button>
+    </Typography>
+    <Container component="main" maxWidth="xs">
     <Box
           sx={{
             marginTop: 4,
