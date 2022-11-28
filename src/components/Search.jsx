@@ -55,16 +55,17 @@ const Search = ({ composers }) => {
               required
               fullWidth
               id="search"
-              label="Search"
               name="search"
               autoComplete="search"
               autoFocus
               onChange={(e) => setSearch(e.target.value.toLowerCase())}
               value={search}
         />
-        <Typography align='center'>
-        <Button variant='outlined'>Search</Button>
-        </Typography>
+        <Button variant='outlined' sx={{
+            position: 'relative',
+            top: '-999px',
+            left: '-999px',
+        }}></Button>
         </Box>
         </Box>
     </Container>
