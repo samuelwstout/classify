@@ -27,8 +27,8 @@ const Search = ({ composers }) => {
         return (
             <Grid item key={composer.id} xs={12} sm={12} md={12}>
                 <Card onClick={() => navigate('/albums')} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <CardContent onClick={() => localStorage.setItem('composer', composer.name)} sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant='h5' component='h2'>
+                    <CardContent onClick={() => localStorage.setItem('composer', composer.name)}>
+                    <Typography variant='h5' component='h2' sx={{ mt: 1, cursor: 'pointer' }}>
                       {composer.name}
                     </Typography>
                     </CardContent>
