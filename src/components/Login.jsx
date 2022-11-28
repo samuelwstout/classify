@@ -31,7 +31,7 @@ const Login = ({ code }) => {
             Classify
             </Typography>
             <Typography sx={{ mt: 2 }}>
-                <Button href={AUTH_URL_LOCAL} variant='outlined'>LISTEN ON<img width={70} style={{ paddingLeft: '.60rem' }} src='../Spotify_Icon_CMYK_Green.png'></img></Button>
+                <Button href={AUTH_URL_LOCAL} variant='outlined'>LISTEN ON SPOTIFY</Button>
             </Typography> 
             </Box>
       </Container>
