@@ -35,11 +35,10 @@ const App = () => {
     spotifyApi.setAccessToken(accessToken)
   }, [accessToken])
 
-
   return (
     <Router>
         <Routes>
-          <Route path='/' element={<Login code={code} />} />
+          <Route path='/' element={<Login code={code}  />} />
           <Route path='/search' element={<Search composers={composers} />} />
           <Route path='/albums' element={<Albums spotifyApi={spotifyApi} accessToken={accessToken} setAlbumImg={setAlbumImg} />} />
           <Route path='/tracks/:id' element={<Tracks spotifyApi={spotifyApi} accessToken={accessToken} albumImg={albumImg} />} />
