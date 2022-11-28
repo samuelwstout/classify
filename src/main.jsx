@@ -6,10 +6,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
-    primary: {
-      main: '#0a1b2f'
-    }
-  }
+    mode: 'dark',
+  },
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
