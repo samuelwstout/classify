@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Player from './Player'
 import useToggle from './useToggle'
-import { Box, Typography, Card, CardContent, CssBaseline } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { Box, Typography, Card, CardContent, CssBaseline, Button } from '@mui/material'
 
 const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
+
+    const navigate = useNavigate()
 
     const params = useParams().id
 
@@ -34,6 +37,9 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
   return (
     <>
     <CssBaseline />
+      <Typography align='left'>
+        <Button onClick={() => navigate('/albums')}>Back</Button>
+      </Typography>
       <Box
       sx={{
         display: 'flex',
