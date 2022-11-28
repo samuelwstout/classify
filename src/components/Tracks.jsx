@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Player from './Player'
 import useToggle from './useToggle'
-import { Box, Typography, Card, CardContent } from '@mui/material'
+import { Box, Typography, Card, CardContent, CssBaseline } from '@mui/material'
 
 const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
 
@@ -33,6 +33,7 @@ const Tracks = ({ spotifyApi, accessToken, albumImg }) => {
 
   return (
     <>
+    <CssBaseline />
       <Box
       sx={{
         display: 'flex',

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Typography, Container, ImageListItem, ImageListItemBar, ImageList } from '@mui/material'
+import { Box, Typography, ImageListItem, ImageListItemBar, ImageList, CssBaseline } from '@mui/material'
 
 const Albums = ({ accessToken, spotifyApi, setAlbumImg }) => {
 
@@ -44,6 +44,7 @@ const Albums = ({ accessToken, spotifyApi, setAlbumImg }) => {
 
   return (
     <>
+    <CssBaseline />
       <Box sx={{ pt: 2, pb: 3 }}>
           <Typography align='center' component='h1' variant='h4'>{composer}</Typography>
         <Box
