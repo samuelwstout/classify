@@ -1,5 +1,6 @@
 # Classify
 #### [https://classify.up.railway.app](https://classify.up.railway.app)
+#### [VIDEO DEMO HERE](https://youtu.be/1azpaZv59Wc)
 _React/Node/Express music player app integrated with Spotify and Open Opus APIs for classical music listening._
 
 #### [Backend repo](https://github.com/samuelwstout/classify-backend-deploy)
